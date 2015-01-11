@@ -6,6 +6,7 @@ datetime_str <- paste(data[, "Date"], data[, "Time"])
 datetime <- strptime(datetime_str, format="%e/%m/%Y %H:%M:%S")
 
 # plot
+png("plot4.png")
 par(mfrow=c(2,2))
 with(data, {
         plot(datetime, Global_active_power, type="l",
@@ -23,5 +24,8 @@ with(data, {
 })
 
 # save as png file
-dev.copy(png, file="plot4.png", height=480, width=480)
+#dev.copy(png, file="plot4.png", height=480, width=480)
+# dev.copy doesn't return the same plot as it shows in RStudio v0.98.1091
+# on Mac OS X Yosemite v10.10.1 (14B25), 
+# seems to be a bug
 dev.off()
